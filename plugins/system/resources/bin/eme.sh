@@ -39,7 +39,7 @@ if [ -d "$EMELIB" ]; then
     export EMELIB
 else
     echo "ERROR: Cannot find eme-lib. $EMELIB" >&2
-    exit 1
+  #  exit 1
 fi
 
 
@@ -106,8 +106,9 @@ case "$CMD" in
 
     APPNAME="$(cd "$APPNAME" && pwd)"
    
-    if [ ! -d "$APPNAME/eme-lib" ]; then
-        git submodule add -b main --depth 1  https://github.com/entermedia-community/eme-lib.git eme-lib
+    if [ ! -d "$APPNAME/plugins/finder/html" ]; then
+        git submodule add -b main --depth 1  https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder/html
+        git submodule update --init --recursive
     fi
 
     #Compile the eme-lib if it has not been compiled yet
