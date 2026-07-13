@@ -85,6 +85,7 @@ else
 	echo "SITE=$SITE" >> "$SERVERHOME/.env"
 	echo "NODENUMBER=$NODENUMBER" >> "$SERVERHOME/.env"
 	echo "IP_ADDR=$IP_ADDR" >> "$SERVERHOME/.env"
+	chown -R entermedia:entermedia "$SERVERHOME"
 fi
 
 

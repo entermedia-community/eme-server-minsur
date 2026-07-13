@@ -7,4 +7,4 @@
 -Dstdout.encoding=UTF-8
 -Dstderr.encoding=UTF-8
 -DSERVERHOME=$SERVERHOME
--cp "$SERVERHOME/bin:$SERVERHOME/tomcat/bin/*:$SERVERHOME/tomcat/lib/*:$SERVERHOME/plugins/openedit/lib/*:$SERVERHOME/plugins/community/lib/*:$SERVERHOME/plugins/system/lib/*:$SERVERHOME/plugins/finder/lib/*:$SERVERHOME/plugins/manager/lib/*:$SERVERHOME/plugins/mediadb/lib/*"
+-cp "$SERVERHOME/build:$SERVERHOME/tomcat/bin/*:$SERVERHOME/tomcat/lib/*:$SERVERHOME/plugins/openedit/lib/*:$SERVERHOME/plugins/community/lib/*:$SERVERHOME/plugins/system/lib/*:$SERVERHOME/plugins/finder/lib/*:$SERVERHOME/plugins/manager/lib/*:$SERVERHOME/plugins/mediadb/lib/*"

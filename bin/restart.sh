@@ -1,1 +1,2 @@
-sudo docker stop -t 60 eme-local106 && sudo docker start eme-local106
+. ../.env
+sudo docker stop -t 60 $INSTANCE && sudo docker start $INSTANCE
