@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-#set -x 
+set -x 
+
 ##This is run from the /bin/eme location that is linked
 
 CMD="${1:-start}"
@@ -98,6 +99,7 @@ case "$CMD" in
         #sudo mkdir -p "$APPNAME"
         #git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $APPNAME
         mkdir -p "$APPNAME" 
+        sudo chown "$USERID:$GROUPID" "$APPNAME"
         cd "$APPNAME"
         git init
         git remote add upstream https://github.com/entermedia-community/eme-server.git
