@@ -1,3 +1,4 @@
+bin/
 tomcat/logs
 tomcat/work
 webapp/WEB-INF/data/catalog/generated/
