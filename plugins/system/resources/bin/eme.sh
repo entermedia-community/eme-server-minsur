@@ -20,9 +20,9 @@ fi
 
 mkdir -p "$APPNAME"
 cd  "$APPNAME"
+
 # Resolve EMELIB: prefer sibling eme-lib, then env var, then system default
 
-#Make a function that I can pass in the number of levels to go up for the relative path and it return ../.. etc
 function get_relative_emelib {
     local levels=$1
     local relative_path=""      
@@ -33,7 +33,7 @@ function get_relative_emelib {
     echo "$relative_path"
 }
 
-EMELIB="$(get_relative_emelib 1)"
+EMELIB="/"
 
 if [ -d "$EMELIB" ]; then
     export EMELIB
@@ -96,7 +96,13 @@ case "$CMD" in
 
     if [ ! -d "$APPNAME" ]; then
         #sudo mkdir -p "$APPNAME"
-        git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $APPNAME
+        #git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $APPNAME
+        mkdir -p "$APPNAME" 
+        cd "$APPNAME"
+        git init
+        git remote add upstream https://github.com/entermedia-community/eme-server.git
+        git fetch upstream 
+        git merge upstream/main
     fi    
     #check ownership of target, if not owned by current user, change ownership to current user
     if [ "$(stat -c '%u:%g' "$APPNAME")" != "$USERID:$GROUPID" ]; then
@@ -106,9 +112,8 @@ case "$CMD" in
 
     APPNAME="$(cd "$APPNAME" && pwd)"
    
-    if [ ! -d "$APPNAME/plugins/finder/html" ]; then
-        git submodule add -b main --depth 1  https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder/html
-        git submodule update --init --recursive
+    if [ ! -d "$APPNAME/plugins/finder/html" ]; then 
+        git submodule update --init --recursive --depth 1
     fi
 
     #Compile the eme-lib if it has not been compiled yet
@@ -128,11 +133,11 @@ case "$CMD" in
     fi
 
 
-    if [ ! -L "$APPNAME/webapp/_site.xconf" ]; then
-        mkdir -p "$APPNAME/webapp/WEB-INF/"
-        ln -nsf "$(get_relative_emelib 2)/resources/webapp/_site.xconf" "$APPNAME/webapp/_site.xconf"
-        sudo chown -R $USERID:$GROUPID "$APPNAME/webapp"
-    fi
+    #if [ ! -L "$APPNAME/webapp/_site.xconf" ]; then
+    #    mkdir -p "$APPNAME/webapp/WEB-INF/"
+    #    ln -nsf "$(get_relative_emelib 2)/resources/webapp/_site.xconf" "$APPNAME/webapp/_site.xconf"
+    #    sudo chown -R $USERID:$GROUPID "$APPNAME/webapp"
+    #fi
 
     if [ ! -f "$APPNAME/webapp/WEB-INF/web.xml" ]; then
           cp -rp "$EMELIB/resources/webapp/WEB-INF/web.xml" "$APPNAME/webapp/WEB-INF/web.xml"
@@ -142,9 +147,9 @@ case "$CMD" in
           cp -rp "$EMELIB/resources/webapp/WEB-INF/node.xml" "$APPNAME/webapp/WEB-INF/node.xml"
     fi
 
-    if [ ! -L "$APPNAME/webapp/WEB-INF/bin" ]; then
-        ln -nsf "$(get_relative_emelib 3)/resources/webapp/WEB-INF/bin" "$APPNAME/webapp/WEB-INF/bin"
-    fi
+   # if [ ! -L "$APPNAME/webapp/WEB-INF/bin" ]; then
+   #     ln -nsf "$(get_relative_emelib 3)/resources/webapp/WEB-INF/bin" "$APPNAME/webapp/WEB-INF/bin"
+   # fi
 
  #   sudo chown ${USERID}:${GROUPID} "$APPNAME/webapp/"
     if [ ! -L "$APPNAME/data" ]; then
@@ -171,19 +176,20 @@ case "$CMD" in
 
     # symbolically link built-in plugins from emelib to webapp, but only if they don't already exist in the target plugins directory (i.e. user overwrote them)
     #only do this if the emelib is relative
-    for plugin in "$(get_relative_emelib 1)/plugins"/*/; do
-        pluginname="$(basename "$plugin")"
 
-        if [ -d "${plugin}html" ]; then
-            ##if its an invalid symbolic link then remove it and create a new one
-            echo "Adding plugin: $APPNAME/webapp/$pluginname"
-            if [ -L "$APPNAME/webapp/$pluginname" ]; then
-                echo "Removing invalid symbolic link: $APPNAME/webapp/$pluginname"
-                rm "$APPNAME/webapp/$pluginname"
-            fi
-            ln -nsf "$(get_relative_emelib 2)/plugins/${pluginname}/html"  "$APPNAME/webapp/$pluginname"
-        fi
-    done
+    #for plugin in "$(get_relative_emelib 1)/plugins"/*/; do
+    #    pluginname="$(basename "$plugin")"
+
+    #    if [ -d "${plugin}html" ]; then
+    #        ##if its an invalid symbolic link then remove it and create a new one
+    #        echo "Adding plugin: $APPNAME/webapp/$pluginname"
+    #        if [ -L "$APPNAME/webapp/$pluginname" ]; then
+    #            echo "Removing invalid symbolic link: $APPNAME/webapp/$pluginname"
+    #            rm "$APPNAME/webapp/$pluginname"
+    #        fi
+    #        ln -nsf "$(get_relative_emelib 2)/plugins/${pluginname}/html"  "$APPNAME/webapp/$pluginname"
+    #    fi
+    #done
 
     export EMSERVER="${2:-$SCRIPT_DIR}"
     export EMSERVER="$(cd "$EMSERVER" && pwd)"
