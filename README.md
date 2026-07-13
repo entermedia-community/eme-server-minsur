@@ -3,10 +3,11 @@
 -Initializing Project
 
 Add Modules:
- git submodule add -b main --depth 1  https://github.com/entermedia-community/eme-lib.git plugins/eme-lib
- git submodule add -b main --depth 1  https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder
+git submodule add -b main --depth 1 https://github.com/entermedia-community/eme-lib.git plugins/eme-lib
+git submodule add -b main --depth 1 https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder
 
----------------------------------------------------------------------------------
+---
+
 -Deploy an instance
 
 Fork server and then add upstream and fetch:
@@ -18,6 +19,5 @@ git fetch upstream
 git merge upstream/main
 
 Init submodules:
-git submodule update --init --recursive --depth 1
----------------------------------------------------------------------------------
 
+`git submodule update --init --recursive --depth 1`
