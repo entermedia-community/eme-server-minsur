@@ -45,6 +45,11 @@ case "$CMD" in
     JAVA_HOME="/usr/lib/jvm/java-18-openjdk-amd64"
     export JAVA_HOME
 
+    truncate -s 0 /etc/resolv.conf
+    echo 'nameserver 1.1.1.1' >>/etc/resolv.conf
+    echo 'nameserver 8.8.8.8' >>/etc/resolv.conf
+    echo 'options ndots:0' >>/etc/resolv.conf
+
     sudo -u entermedia /usr/bin/eme start "$2"
     ;;
 
@@ -73,20 +78,15 @@ case "$CMD" in
         git init
         git remote add origin https://github.com/entermedia-community/eme-server.git
         git pull origin main --depth 1
-        #git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $SERVERHOME
-        #cd "$SERVERHOME"
-        git remote add upstream https://github.com/entermedia-community/eme-server.git
+        
+        # Allow users fork 
+        #git remote add upstream https://github.com/entermedia-community/eme-server.git
+
+        #Setup submodules
         git submodule update --init --recursive --depth 1
-        #git fetch upstream 
-        #git merge upstream/main
+        
     fi  
     
-    #check ownership of target, if not owned by current user, change ownership to current user
-    #if [ "$(stat -c '%u:%g' "$SERVERHOME")" != "$USERID:$GROUPID" ]; then
-    #    echo "Changing ownership of $SERVERHOME to $USERID:$GROUPID"
-    #    sudo chown "$USERID:$GROUPID" "$SERVERHOME"
-    #fi  
-
     cd "$SERVERHOME"
 
     #Compile the eme-lib if it has not been compiled yet

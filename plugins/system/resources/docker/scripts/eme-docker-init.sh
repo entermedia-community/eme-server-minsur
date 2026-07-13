@@ -110,12 +110,8 @@ docker run -t -d \
 
 	#/usr/bin/bash
 
+#TODO: Move it to .env file
 # Fix /etc/resolv.conf to independently reflect Cloudflare and Google DNS
-
-docker exec -d $INSTANCE sudo sh -c "truncate -s 0 /etc/resolv.conf"
-docker exec -d $INSTANCE sudo sh -c "echo 'nameserver 1.1.1.1' >>/etc/resolv.conf"
-docker exec -d $INSTANCE sudo sh -c "echo 'nameserver 8.8.8.8' >>/etc/resolv.conf"
-docker exec -d $INSTANCE sudo sh -c "echo 'options ndots:0' >>/etc/resolv.conf"
 
 echo ""
 echo "Node is running: curl http://$IP_ADDR:8080 in $SCRIPTROOT"
