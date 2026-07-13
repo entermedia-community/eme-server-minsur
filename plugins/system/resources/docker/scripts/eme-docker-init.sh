@@ -69,7 +69,6 @@ fi
 # Create custom scripts
 SCRIPTROOT=${SERVERHOME}/bin
 
-
 echo "Review the following URL to get the full TZ list"
 echo "https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"
 echo "Default time zone(TZ) will be US Eastern time"
@@ -109,9 +108,6 @@ docker run -t -d \
 	/usr/bin/eme dockerstart /home/entermedia/eme-server
 
 	#/usr/bin/bash
-
-#TODO: Move it to .env file
-# Fix /etc/resolv.conf to independently reflect Cloudflare and Google DNS
 
 echo ""
 echo "Node is running: curl http://$IP_ADDR:8080 in $SCRIPTROOT"
