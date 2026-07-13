@@ -96,7 +96,13 @@ case "$CMD" in
 
     if [ ! -d "$APPNAME" ]; then
         #sudo mkdir -p "$APPNAME"
-        git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $APPNAME
+        #git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $APPNAME
+        mkdir -p "$APPNAME" 
+        cd "$APPNAME"
+        git init
+        git remote add upstream https://github.com/entermedia-community/eme-server.git
+        git fetch upstream 
+        git merge upstream/main
     fi    
     #check ownership of target, if not owned by current user, change ownership to current user
     if [ "$(stat -c '%u:%g' "$APPNAME")" != "$USERID:$GROUPID" ]; then
@@ -106,9 +112,8 @@ case "$CMD" in
 
     APPNAME="$(cd "$APPNAME" && pwd)"
    
-    if [ ! -d "$APPNAME/plugins/finder/html" ]; then
-        git submodule add -b main --depth 1  https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder/html
-        git submodule update --init --recursive
+    if [ ! -d "$APPNAME/plugins/finder/html" ]; then 
+        git submodule update --init --recursive --depth 1
     fi
 
     #Compile the eme-lib if it has not been compiled yet
