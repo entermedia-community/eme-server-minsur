@@ -1,4 +1,4 @@
-bin/
+/bin/
 tomcat/logs
 tomcat/work
 webapp/WEB-INF/data/catalog/generated/
@@ -7,4 +7,3 @@ webapp/WEB-INF/data/repos/
 webapp/WEB-INF/elastic/
 webapp/WEB-INF/tmp/
 webapp/WEB-INF/temp/
-bin

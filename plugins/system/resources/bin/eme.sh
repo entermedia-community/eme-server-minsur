@@ -23,7 +23,6 @@ cd  "$APPNAME"
 
 # Resolve EMELIB: prefer sibling eme-lib, then env var, then system default
 
-#Make a function that I can pass in the number of levels to go up for the relative path and it return ../.. etc
 function get_relative_emelib {
     local levels=$1
     local relative_path=""      
