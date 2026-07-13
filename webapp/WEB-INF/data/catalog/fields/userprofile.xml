@@ -1,2 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
-<properties beanname="dataSearcher"/>
+<properties> 
+  <property id="databasecurrentsearch" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[databasecurrentsearch]]></language> 
+    </name> 
+  </property>  
+  <property id="view_entitytopicgeneral" index="true" deleted="false" editable="true" stored="true">New
+    <name>
+      <language id="en"><![CDATA[view_entitytopicgeneral]]></language>
+    </name>
+  </property>
+</properties>

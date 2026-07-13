@@ -1,0 +1,17 @@
+{
+	"response": {
+		"status": "ok",
+		"userid": "$user.id"
+	},
+	"results": [
+    #foreach($topic in $topics)
+    #if($foreach.count > 1),#end
+    {
+      "id":"$topic.id",
+      "thumbnail":"$siteroot$mediaarchive.asLinkToPreview($topic, 'image200x200')",
+      "name":"#text($topic)",
+      "description":"$topic.longcaption"
+    }
+    #end
+  ]
+}
