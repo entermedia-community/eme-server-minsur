@@ -66,12 +66,12 @@ case "$CMD" in
 
     echo "**** Starting server from: $SERVERHOME"
 
-    if [ ! -d "$SERVERHOME/.git" ]; then
+    if [ ! -d "$SERVERHOME/webapp" ]; then
         sudo mkdir -p "$SERVERHOME"
         sudo chown "$USERID:$GROUPID" "$SERVERHOME"
         cd "$SERVERHOME"
         git init
-        git remote add origin -b main --depth 1  https://github.com/entermedia-community/eme-server.git
+        git remote add origin https://github.com/entermedia-community/eme-server.git
         git pull origin main --depth 1
         #git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $SERVERHOME
         #cd "$SERVERHOME"
