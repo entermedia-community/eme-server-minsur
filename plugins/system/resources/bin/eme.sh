@@ -97,14 +97,11 @@ case "$CMD" in
 
     if [ ! -d "$APPNAME" ]; then
         #sudo mkdir -p "$APPNAME"
-        #git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $APPNAME
-        mkdir -p "$APPNAME" 
-        sudo chown "$USERID:$GROUPID" "$APPNAME"
+        git clone -b main --depth 1  https://github.com/entermedia-community/eme-server.git $APPNAME
         cd "$APPNAME"
-        git init
         git remote add upstream https://github.com/entermedia-community/eme-server.git
-        git fetch upstream 
-        git merge upstream/main
+        #git fetch upstream 
+        #git merge upstream/main
     fi    
     #check ownership of target, if not owned by current user, change ownership to current user
     if [ "$(stat -c '%u:%g' "$APPNAME")" != "$USERID:$GROUPID" ]; then
@@ -114,7 +111,7 @@ case "$CMD" in
 
     APPNAME="$(cd "$APPNAME" && pwd)"
    
-    if [ ! -d "$APPNAME/plugins/finder/html" ]; then 
+    if [ ! -d "$APPNAME/plugins/finder" ]; then 
         git submodule update --init --recursive --depth 1
     fi
 
