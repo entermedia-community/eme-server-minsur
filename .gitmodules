@@ -3,3 +3,7 @@
 	path = plugins/eme-lib
 	url = https://github.com/entermedia-community/eme-lib.git
 	branch = main
+[submodule "plugins/finder"]
+	path = plugins/finder
+	url = https://github.com/entermedia-community/eme-plugin-finder.git
+	branch = main
