@@ -30,7 +30,7 @@ DOCKERPROJECT=entermediadb
 DOCKERIMAGE=eme-server
 BRANCH=latest
 DOCKERNETWORKBASE=172.18.0
-ENDPOINTBASE=/media/emsites
+SERVERHOMEBASE=/media/emsites
 SITE=$1
 NODENUMBER=$2
 
@@ -49,7 +49,7 @@ ALREADY=$(docker ps -aq --filter name=$INSTANCE)
 
 IP_ADDR="$DOCKERNETWORKBASE.$NODENUMBER"
 
-ENDPOINT=$ENDPOINTBASE/$SITE
+SERVERHOME=$SERVERHOMEBASE/$SITE
 
 # Create entermedia user if needed
 if [[ ! $(id -u entermedia 2> /dev/null) ]]; then
@@ -66,37 +66,26 @@ fi
 
 # TODO: support upgrading, start, stop and removing
 
-# Initialize site root
-if [[ ! -d $ENDPOINT/webapp ]]; then
-	mkdir -p ${ENDPOINT}/{webapp,data,bin,elastic}
-	chown -R entermedia:entermedia ${ENDPOINT}
-	rm -rf "/tmp/$NODENUMBER"  2>/dev/null
-	mkdir -p "/tmp/$NODENUMBER"
-	chown entermedia:entermedia "/tmp/$NODENUMBER"
-fi
-
 # Create custom scripts
-SCRIPTROOT=${ENDPOINT}/bin
-
-echo "sudo docker start $INSTANCE" > ${SCRIPTROOT}/start.sh
-echo "sudo docker stop -t 60 $INSTANCE" > ${SCRIPTROOT}/stop.sh
-echo "sudo docker stop -t 60 $INSTANCE && sudo docker start $INSTANCE" > ${SCRIPTROOT}/restart.sh
-echo "sudo docker logs -f --tail 500 $INSTANCE"  > ${SCRIPTROOT}/logs.sh
-echo "sudo docker exec -it $INSTANCE bash"  > ${SCRIPTROOT}/bash.sh
-echo "sudo bash $SCRIPTROOT/eme-docker-init.sh $SITE $NODENUMBER" > ${SCRIPTROOT}/rebuild.sh
-echo 'sudo docker exec -it -u 0 '$INSTANCE' /usr/share/eme-lib/resources/docker/scripts/update.sh $1 $2' > ${SCRIPTROOT}/update.sh
-
-# Health check
-echo "#!/bin/bash +x" > ${SCRIPTROOT}/health.sh
-echo "IP=http://$IP_ADDR:9200" >> ${SCRIPTROOT}/health.sh
-wget -O - https://raw.githubusercontent.com/entermedia-community/entermediadb-docker/master/elastic/health-base.sh >> ${SCRIPTROOT}/health.sh
-
-chmod 755 ${SCRIPTROOT}/*.sh
+SCRIPTROOT=${SERVERHOME}/bin
 
 echo "Review the following URL to get the full TZ list"
 echo "https://en.wikipedia.org/wiki/List_of_tz_database_time_zones"
 echo "Default time zone(TZ) will be US Eastern time"
 
+#check if .env file exists
+if [ -f "$SERVERHOME/.env" ]; then	
+	echo "Using existing .env file"
+else
+	echo "Creating new .env file"
+	mkdir -p "$SERVERHOME"
+	echo "INSTANCE=$INSTANCE" > "$SERVERHOME/.env"
+	echo "SCRIPTROOT=$SCRIPTROOT" >> "$SERVERHOME/.env"
+	echo "SITE=$SITE" >> "$SERVERHOME/.env"
+	echo "NODENUMBER=$NODENUMBER" >> "$SERVERHOME/.env"
+	echo "IP_ADDR=$IP_ADDR" >> "$SERVERHOME/.env"
+	chown -R entermedia:entermedia "$SERVERHOME"
+fi
 
 
 set -e
@@ -114,19 +103,14 @@ docker run -t -d \
 	-e GROUPID=$GROUPID \
 	-e CLIENT_NAME=$SITE \
 	-e INSTANCE_PORT=$NODENUMBER \
-	-v ${ENDPOINT}/:/usr/share/eme-server \
+	-v ${SERVERHOME}/:/home/entermedia/eme-server \
 	$DOCKERPROJECT/$DOCKERIMAGE:$BRANCH \
-	/usr/bin/eme dockerstart /usr/share/eme-server
+	/usr/bin/eme dockerstart /home/entermedia/eme-server
 
-# Fix /etc/resolv.conf to independently reflect Cloudflare and Google DNS
-
-docker exec -d $INSTANCE sudo sh -c "truncate -s 0 /etc/resolv.conf"
-docker exec -d $INSTANCE sudo sh -c "echo 'nameserver 1.1.1.1' >>/etc/resolv.conf"
-docker exec -d $INSTANCE sudo sh -c "echo 'nameserver 8.8.8.8' >>/etc/resolv.conf"
-docker exec -d $INSTANCE sudo sh -c "echo 'options ndots:0' >>/etc/resolv.conf"
-
+	#/usr/bin/bash
 
 echo ""
 echo "Node is running: curl http://$IP_ADDR:8080 in $SCRIPTROOT"
 echo ""
 echo "- Run ${SCRIPTROOT}/logs.sh to view logs"
+ 

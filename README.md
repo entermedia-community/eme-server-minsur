@@ -12,8 +12,11 @@ git submodule add -b main --depth 1 https://github.com/entermedia-community/eme-
 
 Fork server and then add upstream and fetch:
 cd eme-server-myserver
+git init
+git config --global init.defaultBranch main
 git remote add upstream https://github.com/entermedia-community/eme-server.git
 git fetch upstream
+git merge upstream/main
 
 Init submodules:
 
