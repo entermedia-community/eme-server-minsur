@@ -1,5 +1,6 @@
 # eme-server-minsur
 
+<<<<<<< HEAD
 Docker Install Instructions
 ---
 install eme-server instance:
@@ -33,3 +34,18 @@ Init submodules:
 git submodule update --init --recursive --depth 1
 ---
 
+=======
+
+Instsructions for initializing Project Only (New Client)
+---
+Add SubModules:
+git submodule add -b main --depth 1 https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder
+---
+
+Deleting Submodules
+---
+git submodule deinit -f plugins/eme-lib
+git rm --cached -r plugins/eme-lib
+*Manually delete Plugin entry in .gitmodules
+---
+>>>>>>> upstream/main
