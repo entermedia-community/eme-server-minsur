@@ -11,7 +11,7 @@
 			"mainClass": "org.apache.catalina.startup.Bootstrap",
 			"vmArgs": "-XX:+ShowCodeDetailsInExceptionMessages -Dcatalina.home=${workspaceFolder:eme-server-minsur}/tomcat/ -Dcatalina.base=${workspaceFolder:eme-server-minsur}/tomcat -Djava.io.tmpdir=${workspaceFolder:eme-server-minsur}/tomcat/work -Dfile.encoding=UTF-8 -Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8 -DEMELIB=${workspaceFolder:eme-server-minsur}",
 			"classPaths": [
-				"${workspaceFolder:eme-server-minsur}/bin",
+				"${workspaceFolder:eme-server-minsur}/build",
 				"${workspaceFolder:eme-server-minsur}/plugins/system/lib/jte-3.1.12.jar",
 				"${workspaceFolder:eme-server-minsur}/plugins/system/lib/jte-extension-api-3.1.12.jar",
 				"${workspaceFolder:eme-server-minsur}/plugins/system/lib/jte-runtime-3.1.12.jar",
@@ -144,13 +144,7 @@
 			"name": "Attach to Tomcat",
 			"request": "attach",
 			"hostName": "localhost",
-			"port": 43599,
-			"sourceRoots": [
-				"${workspaceFolder:eme-server-minsur}/plugins/system/code",
-				"${workspaceFolder:eme-server-minsur}/plugins/openedit/code",
-				"${workspaceFolder:eme-server-minsur}/plugins/finder/code",
-				"${workspaceFolder:eme-server-minsur}/plugins/community/code"
-			]
+			"port": 43599
 		}
 	]
 }
