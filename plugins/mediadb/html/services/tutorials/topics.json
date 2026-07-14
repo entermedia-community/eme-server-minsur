@@ -7,10 +7,11 @@
     #foreach($topic in $topics)
     #if($foreach.count > 1),#end
     {
-      "id":"$topic.id",
-      "thumbnail":"$siteroot$mediaarchive.asLinkToPreview($topic.primarymedia, 'image200x200')",
-      "name":"#text($topic)",
-      "description":"$topic.longcaption"
+      "id": #jesc($topic.id),
+      "thumbnail": "$siteroot$mediaarchive.asLinkToPreview($topic.primarymedia, 'image200x200')",
+      "name": "#text($topic)",
+      "tutorials": #jesc($topic.tutorials),
+      "description": #jesc($topic.longcaption)
     }
     #end
   ]
