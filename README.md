@@ -1,15 +1,20 @@
-# eme-server
+# eme-server-minsur
 
--Initializing Project
+Docker Install Instructions
+---
+install eme-server instance:
+curl -o eme-docker-init.sh -jL https://raw.githubusercontent.com/entermedia-community/eme-server/refs/heads/main/plugins/system/resources/docker/scripts/eme-docker-init.sh
+sudo bash ./eme-docker-init.sh eme-server-myserver 100
 
-Add Modules:
-git submodule add -b main --depth 1 https://github.com/entermedia-community/eme-lib.git plugins/eme-lib
-git submodule add -b main --depth 1 https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder
-
+cd eme-server-myserver
+git remote set-url origin https://github.com/entermedia-community/eme-server-minsur.git
+git fetch
+*Resolve conflicts, may need to add useremail/username 
+git pull origin main
 ---
 
--Deploy an instance
-
+Development Instructions
+---
 Fork server and then add upstream and fetch:
 cd eme-server-myserver
 git init
@@ -20,4 +25,11 @@ git merge upstream/main
 
 Init submodules:
 
-`git submodule update --init --recursive --depth 1`
+git submodule update --init --recursive --depth 1
+---
+
+Instsructions for initializing Project Only (New Client)
+---
+Add SubModules:
+git submodule add -b main --depth 1 https://github.com/entermedia-community/eme-plugin-finder.git plugins/finder
+---

@@ -2,8 +2,8 @@
 tomcat/logs
 webapp/WEB-INF/data/catalog/generated/
 webapp/WEB-INF/data/catalog/originals/
-webapp/WEB-INF/data/repos/
 webapp/WEB-INF/elastic/
 webapp/WEB-INF/tmp/
 webapp/WEB-INF/temp/
+webapp/WEB-INF/trash/
 .DS_Store
