@@ -10,6 +10,9 @@
 			"path": "/usr/lib/jvm/jre"
 		}
 	],
-	"java.project.outputPath": "build" 
+	"java.project.outputPath": "build",
+
+	"git.rebaseWhenPulling": true,
+	"git.rebaseWhenSync": true
 }
 
