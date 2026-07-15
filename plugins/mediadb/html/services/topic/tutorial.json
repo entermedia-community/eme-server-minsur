@@ -6,7 +6,7 @@
   "tutorial": {
     "id": #jesc($tutorial.id),
     "entitytopicid": #jesc($tutorial.entitytopic),
-    "name": "#text($tutorial)",
+    "title": "#text($tutorial)",
     "progress": {
       "beginnerprogress": #jesc($progress.beginnerprogress),
       "competentprogress": #jesc($progress.competentprogress),
@@ -21,7 +21,7 @@
       #if($foreach.count > 1),#end
       {
         "id": #jesc($section.id),
-        "name": "#text($section)",
+        "title": "#text($section)",
         "contents": [
           #set($componentcontents = $mediaarchive.query("componentcontent").exact("componentsectionid", $section.getId()).sort("ordering").search())
           #foreach($componentcontent in $componentcontents)
