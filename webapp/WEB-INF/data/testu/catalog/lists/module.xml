@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root> 
+  <data id="entitytopic" showonsearch="true" securityenabled="false" ordering="0" semanticenabled="true" autocreateentities="false" isentity="true" enableuploading="true" moduleicon="book-half">
+    <name><![CDATA[Topics]]></name>
+  </data>  
+  <data id="entityasset" showonsearch="true" securityenabled="false" ordering="0" semanticenabled="true" autocreateentities="false" isentity="true" enableuploading="true" moduleicon="image-fill"> 
+    <name><![CDATA[Sources]]></name> 
+  </data> 
+</root>
