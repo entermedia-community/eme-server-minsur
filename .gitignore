@@ -2,6 +2,8 @@
 tomcat/logs
 webapp/WEB-INF/data/catalog/generated/
 webapp/WEB-INF/data/catalog/originals/
+webapp/WEB-INF/data/catalog/lists/
+webapp/WEB-INF/data/system/lists/
 webapp/WEB-INF/elastic/
 webapp/WEB-INF/tmp/
 webapp/WEB-INF/temp/
@@ -16,3 +18,4 @@ webapp/WEB-INF/data/repos
 #.vscode/
 #/webapp/WEB-INF/data/repos
 .DS_Store
+
