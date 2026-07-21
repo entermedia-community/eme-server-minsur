@@ -4,7 +4,7 @@
 
 <records>
 
-   <data id="chat_tutor_welcome" aiskill="adaptiveTutorialSkill" automationscenario="chat_tutor" enabled="true" processingmessage="Loading...">
+   <data id="chat_tutor_welcome" aiskill="adaptiveTutorialWelcomeSkill" automationscenario="chat_tutor" enabled="true" processingmessage="Loading...">
       <name>
          <language id="en"><![CDATA[Tutor Chat Welcome]]></language>
       </name>
