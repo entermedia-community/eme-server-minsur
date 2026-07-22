@@ -16,13 +16,19 @@
       </name>
    </data>
 
-   <data id="adaptiveTutorialUserCommentSkill" bean="adaptiveTutorialUserCommentSkill" contextbean="chatMessageContext" agenttype="remoteagent" ordering="30">
+   <data id="adaptiveTutorialAnswerSkill" bean="adaptiveTutorialAnswerSkill" contextbean="chatMessageContext" agenttype="remoteagent" ordering="30">
+      <name>
+         <language id="en"><![CDATA[Tutor Chat Answer]]></language>
+      </name>
+   </data>
+
+   <data id="adaptiveTutorialUserCommentSkill" bean="adaptiveTutorialUserCommentSkill" contextbean="chatMessageContext" agenttype="remoteagent" ordering="50">
       <name>
          <language id="en"><![CDATA[Tutor Chat User Comment]]></language>
       </name>
    </data>
 
-   <data id="adaptiveTutorialEndSkill" bean="adaptiveTutorialEndSkill" contextbean="chatMessageContext" agenttype="remoteagent" ordering="40">
+   <data id="adaptiveTutorialEndSkill" bean="adaptiveTutorialEndSkill" contextbean="chatMessageContext" agenttype="remoteagent" ordering="60">
       <name>
          <language id="en"><![CDATA[Tutor Chat End]]></language>
       </name>

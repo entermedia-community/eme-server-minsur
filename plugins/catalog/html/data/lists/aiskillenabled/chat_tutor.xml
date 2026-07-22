@@ -16,6 +16,12 @@
       </name>
    </data>
 
+   <data id="chat_tutor_answer" aiskill="adaptiveTutorialAnswerSkill" automationscenario="chat_tutor" enabled="true" processingmessage="Loading...">
+      <name>
+         <language id="en"><![CDATA[Tutor Chat Answer]]></language>
+      </name>
+   </data>
+
    <data id="chat_tutor_usercomment" aiskill="adaptiveTutorialUserCommentSkill" automationscenario="chat_tutor" enabled="true" processingmessage="Loading...">
       <name>
          <language id="en"><![CDATA[Tutor Chat User Comment]]></language>
