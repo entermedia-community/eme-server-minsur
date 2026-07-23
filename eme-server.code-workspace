@@ -15,6 +15,6 @@
 			"files.autoSave": "onFocusChange",
 			"editor.formatOnSave": true,
 		},
-		"java.compile.nullAnalysis.mode": "disabled",
+		"java.debug.settings.onBuildFailureProceed": true,
 	},
 }
