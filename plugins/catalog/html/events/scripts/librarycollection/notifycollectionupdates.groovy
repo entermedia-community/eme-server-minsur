@@ -14,7 +14,15 @@ import org.openedit.util.DateStorageUtil
 public void init()
 {
 
-	//Disabled, use ntfycollectionchats.groovy instead
+
+	//
+	//
+	// Deprecated, use notifycollectionchats.groovy instead
+	//
+	//
+
+
+
 	log.info("notifycollectionupdates.groovy is disabled, use notifycollectionchats.groovy instead");
 	return;
 	
