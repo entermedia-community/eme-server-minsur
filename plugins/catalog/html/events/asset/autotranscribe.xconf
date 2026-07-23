@@ -2,6 +2,6 @@
 
 <page>
   <property name="period">5m</property>
-  <property name="enabled">true</property>
+  <property name="enabled">false</property>
   <property name="eventname">Transcode Queue</property>
 </page>
