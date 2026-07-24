@@ -22,6 +22,12 @@
       </name>
    </data>
 
+   <data id="adaptiveTutorialProgressSkill" bean="adaptiveTutorialProgressSkill" contextbean="chatMessageContext" agenttype="remoteagent" ordering="40">
+      <name>
+         <language id="en"><![CDATA[Tutor Progress]]></language>
+      </name>
+   </data>
+
    <data id="adaptiveTutorialUserCommentSkill" bean="adaptiveTutorialUserCommentSkill" contextbean="chatMessageContext" agenttype="remoteagent" ordering="50">
       <name>
          <language id="en"><![CDATA[Tutor Chat User Comment]]></language>
