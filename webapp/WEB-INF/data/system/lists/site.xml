@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<properties>
-  <property id="50" catalogid="finder/catalog"  rootpath="/finder" >eMediaFinder</property>
-</properties>
+<root>
+  <data id="site" catalogid="site/catalog" rootpath="/site">
+    <name><![CDATA[Minsur]]></name>
+  </data>
+</root>

@@ -71,9 +71,19 @@
       <language id="en"><![CDATA[componentsectionsort]]></language> 
     </name> 
   </property>  
-  <property id="componentcontentsort" index="true" deleted="false" editable="true" stored="true">New
+  <property id="componentcontentsort" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[componentcontentsort]]></language> 
+    </name> 
+  </property>  
+  <property id="mcqcognitivelevelsort" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[mcqcognitivelevelsort]]></language> 
+    </name> 
+  </property>  
+  <property id="answerconfidencesort" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[componentcontentsort]]></language>
+      <language id="en"><![CDATA[answerconfidencesort]]></language>
     </name>
   </property>
 </properties>
