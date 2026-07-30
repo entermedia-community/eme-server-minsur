@@ -2,6 +2,7 @@
 /build/
 tomcat/logs
 webapp/WEB-INF/data/
+!webapp/WEB-INF/data/.gitkeep
 webapp/WEB-INF/elastic/
 webapp/WEB-INF/tmp/
 webapp/WEB-INF/temp/
@@ -16,4 +17,3 @@ plugins/profile/
 plugins/manager/
 plugins/mediadb/
 plugins/openedit/
-plugins/app/

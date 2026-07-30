@@ -5,9 +5,6 @@
 		},
 	],
 	"settings": {
-		"git.autoRepositoryDetection": "subFolders",
-		"git.repositoryScanMaxDepth": 4,
-		"git.scanRepositories": ["plugins/*"],
 		"java.autobuild.enabled": true,
 		"java.debug.settings.hotCodeReplace": "auto",
 		"java.debug.settings.showLogicalStructure": true,
