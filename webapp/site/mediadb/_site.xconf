@@ -6,4 +6,5 @@
   <property name="catalogid">site/catalog</property>
   <property name="applicationid">site/mediadb</property>
   <property name="communitytag">minsur</property>
+  <property name="allowguestregistration">true</property>
 </page>
