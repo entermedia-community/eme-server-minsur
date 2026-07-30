@@ -76,14 +76,24 @@
       <language id="en"><![CDATA[componentcontentsort]]></language> 
     </name> 
   </property>  
-  <property id="mcqcognitivelevelsort" index="true" deleted="false" editable="true" stored="true">New 
+  <property id="view_saveforallenabled" index="true" deleted="false" editable="true" stored="true">New 
     <name> 
-      <language id="en"><![CDATA[mcqcognitivelevelsort]]></language> 
+      <language id="en"><![CDATA[view_saveforallenabled]]></language> 
     </name> 
   </property>  
-  <property id="answerconfidencesort" index="true" deleted="false" editable="true" stored="true">New
+  <property id="assetsort" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[Asset Sort]]></language> 
+    </name> 
+  </property>  
+  <property id="entitytopicresultview" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[entitytopicresultview]]></language> 
+    </name> 
+  </property>  
+  <property id="viewsort" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[answerconfidencesort]]></language>
+      <language id="en"><![CDATA[viewsort]]></language>
     </name>
   </property>
 </properties>
