@@ -91,9 +91,14 @@
       <language id="en"><![CDATA[entitytopicresultview]]></language> 
     </name> 
   </property>  
-  <property id="viewsort" index="true" deleted="false" editable="true" stored="true">New
+  <property id="viewsort" index="true" deleted="false" editable="true" stored="true">New 
+    <name> 
+      <language id="en"><![CDATA[viewsort]]></language> 
+    </name> 
+  </property>  
+  <property id="tutoranswersort" index="true" deleted="false" editable="true" stored="true">New
     <name>
-      <language id="en"><![CDATA[viewsort]]></language>
+      <language id="en"><![CDATA[tutoranswersort]]></language>
     </name>
   </property>
 </properties>
