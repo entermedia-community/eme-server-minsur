@@ -68,7 +68,7 @@ case "$CMD" in
         git checkout -t origin/main
     fi  
     
-    $SERVERHOME/bin/pluginspull.sh
+    $SERVERHOME/bin/plugins.sh
 
   ;;&
 
@@ -141,6 +141,8 @@ case "$CMD" in
     git pull --no-rebase origin main
     git stash pop
     
+    $SERVERHOME/bin/plugins.sh pull
+
    ;;&
 
   branchpush | updatefork)
@@ -164,7 +166,9 @@ case "$CMD" in
         git remote add upstream https://github.com/entermedia-community/eme-server.git
     fi
     git fetch upstream
-    git merge upstream/main
+    git merge upstream/main --allow-unrelated-histories
+    ## allows the upstream to win 
+    git checkout --theirs . 
 
   ;;
 
@@ -307,3 +311,4 @@ case "$CMD" in
     exit 0
     ;;
 esac
+
