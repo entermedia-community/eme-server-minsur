@@ -7,6 +7,7 @@ webapp/WEB-INF/elastic/
 webapp/WEB-INF/tmp/
 webapp/WEB-INF/temp/
 webapp/WEB-INF/trash/
+webapp/site
 
 
 plugins/catalog/
@@ -17,4 +18,4 @@ plugins/profile/
 plugins/manager/
 plugins/mediadb/
 plugins/openedit/
-plugins/app/
+.env

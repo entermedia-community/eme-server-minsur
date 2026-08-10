@@ -14,17 +14,6 @@ if [ -z $BASH ]; then
   exit
 fi
 
-# Root check
-if [[ ! $(id -u) -eq 0 ]]; then
-  echo "You must run this script as the superuser. Usage: sudo ./eme-docker-init.sh serverpath nodenumber"
-  exit 1
-fi
-
-if [ "$#" -ne 4 ]; then
-    echo "Usage: sudo ./eme-docker-init.sh <serverpath> <nodenumber> <userid> <groupid>"
-    exit 1
-fi
-
 # Setup
 DOCKERPROJECT=entermediadb
 DOCKERIMAGE=eme-server
@@ -46,17 +35,17 @@ INSTANCE=$SERVERNAME$NODENUMBER
 DOCKERNETWORK=entermedia
 
 # Pull latest images
-docker pull $DOCKERPROJECT/$DOCKERIMAGE:$BRANCH
+sudo docker pull $DOCKERPROJECT/$DOCKERIMAGE:$BRANCH
 
-ALREADY=$(docker ps -aq --filter name=$INSTANCE)
-[[ $ALREADY ]] && docker stop -t 60 $ALREADY && docker rm -f $ALREADY
+ALREADY=$(sudo docker ps -aq --filter name=$INSTANCE)
+[[ $ALREADY ]] && sudo docker stop -t 60 $ALREADY && sudo docker rm -f $ALREADY
 
 IP_ADDR="$DOCKERNETWORKBASE.$NODENUMBER"
 # Create entermedia user if needed
 
 # Docker networking
-if [[ ! $(docker network ls | grep $DOCKERNETWORK) ]]; then
-  docker network create --subnet $DOCKERNETWORKBASE.0/16 $DOCKERNETWORK
+if [[ ! $(sudo docker network ls | grep $DOCKERNETWORK) ]]; then
+  sudo docker network create --subnet $DOCKERNETWORKBASE.0/16 $DOCKERNETWORK
 fi
 
 # TODO: support upgrading, start, stop and removing
@@ -75,7 +64,7 @@ fi
 
 set -e
 # Run Create Docker Instance, add Mounted HotFolders as needed
-docker run -t -d \
+sudo docker run -t -d \
 	--restart unless-stopped \
 	--net $DOCKERNETWORK \
 	`#-p 22$NODENUMBER:22` \
