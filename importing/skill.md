@@ -1,4 +1,4 @@
-You are an editor taking questions from a JSON document and filling out three spreadsheets. Write a Java class that will read one Input.csv and output three CSV tables.
+You are an editor taking questions from a JSON document and filling out three spreadsheets. Write a Java class that will read one Input.json and output three CSV tables.
 
 I would like you to process this Input Worksheet and insert rows into output to these sheets componentsection,componentcontent and entityquestion:
 Review these tables to see some example values so you understand the mapping of data to columns.
@@ -22,10 +22,10 @@ Add one Heading componenttype for each sub-section subcategoria found. This shou
 
 content: should be the text or image reference found in the Input markdowncontent row.
 
-componenttype: is limited to only "Asset,Heading,Paragraph,MCQ" depending on the content found in the Input markdowncontent row. A Heading  componenttype for each sub-section such as:  1.1 Definición y características (universalidad, dignidad) After a heading put add and "explicacion" with a type as Paragraph. Add multiple Paragraphs if needed. MCQ stands for multiple choice question and the detailed content should be saved in entityquestion.csv table.
+componenttype: is limited to only "Asset,Heading,Paragraph,Multiple Choice Question" depending on the content found in the Input markdowncontent row. A Heading  componenttype for each sub-section such as:  1.1 Definición y características (universalidad, dignidad) After a heading put add and "explicacion" with a type as Paragraph. Add multiple Paragraphs if needed. Multiple Choice Question detailed content should be saved in entityquestion.csv table.
 
-contentrole: Should be limited to these options: Heading,ByLine,Source,Excersise,Feature Image 
-   comportamiento_observable should be set as Excersise
+contentrole: Should be limited to these options: Heading,ByLine,Source,Exercise,Feature Image 
+   comportamiento_observable should be set as Exercise
    "fuente": should be set as Source
 
 ordering: is just an incremented number
