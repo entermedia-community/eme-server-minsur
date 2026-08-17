@@ -9,6 +9,7 @@ if [ -z "$LISTOFPLUGINS" ]; then
     exit 1
 fi
 
+set -e
 
 ##pull 
 ##push "Message"
